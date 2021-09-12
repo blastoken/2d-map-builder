@@ -6,6 +6,7 @@ import Triangle from '../components/triangle';
 import Circle from '../components/circle';
 import Grid from '../components/grid';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 const WrapExposition = styled.main`
   display: flex;
@@ -22,6 +23,39 @@ const variants = {
 }
 
 const Grids: NextPage = () => {
+  useEffect(()=>{
+    document.addEventListener('keydown', (event) => {
+      const keyName = event.key;
+      let movement;
+      switch(keyName){
+        case 'a':
+          movement = 'left';
+        break;
+        case 'w':
+          movement = 'up';
+        break;
+        case 'd':
+          movement = 'right';
+        break;
+        case 's':
+          movement = 'down';
+        break;
+        case 'ArrowLeft':
+          movement = 'left';
+        break;
+        case 'ArrowUp':
+          movement = 'up';
+        break;
+        case 'ArrowRight':
+          movement = 'right';
+        break;
+        case 'ArrowDown':
+          movement = 'down';
+        break;
+      }
+      console.log(movement);
+    });
+  },[]);
   return (
     <div>
       <Head>
