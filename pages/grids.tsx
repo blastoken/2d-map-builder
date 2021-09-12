@@ -23,39 +23,6 @@ const variants = {
 }
 
 const Grids: NextPage = () => {
-  useEffect(()=>{
-    document.addEventListener('keydown', (event) => {
-      const keyName = event.key;
-      let movement;
-      switch(keyName){
-        case 'a':
-          movement = 'left';
-        break;
-        case 'w':
-          movement = 'up';
-        break;
-        case 'd':
-          movement = 'right';
-        break;
-        case 's':
-          movement = 'down';
-        break;
-        case 'ArrowLeft':
-          movement = 'left';
-        break;
-        case 'ArrowUp':
-          movement = 'up';
-        break;
-        case 'ArrowRight':
-          movement = 'right';
-        break;
-        case 'ArrowDown':
-          movement = 'down';
-        break;
-      }
-      console.log(movement);
-    });
-  },[]);
   return (
     <div>
       <Head>
@@ -75,7 +42,7 @@ const Grids: NextPage = () => {
             </ul>
           </nav>
         </div>
-        <Grid columns="5" size="50">
+        <Grid className="pixel-grid" columns="5" size="50">
 
           <Square/>
           <Triangle orientationH="right" rectangle={true}/>

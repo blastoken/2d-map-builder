@@ -78,6 +78,7 @@ const WrapGrid = styled.div`
     background: gray;
     width: max-content;
     height: max-content;
+    overflow: hidden;
     
     &>div{
       height: ${size}px;
@@ -177,6 +178,71 @@ useEffect( ()=>{
       }
     });
   });
+  
+  // Movement function
+    document.addEventListener('keydown', (event) => {
+      const keyName = event.key;
+      let movement:any;
+      switch(keyName){
+        case 'a':
+          movement = 'left';
+        break;
+        case 'w':
+          movement = 'up';
+        break;
+        case 'd':
+          movement = 'right';
+        break;
+        case 's':
+          movement = 'down';
+        break;
+        case 'ArrowLeft':
+          movement = 'left';
+        break;
+        case 'ArrowUp':
+          movement = 'up';
+        break;
+        case 'ArrowRight':
+          movement = 'right';
+        break;
+        case 'ArrowDown':
+          movement = 'down';
+        break;
+      }
+
+      const gridContent = Array.from(document.getElementsByTagName('body')[0].children[0]?.children[0]?.children[0]?.children as HTMLCollectionOf<HTMLElement>);
+      
+      gridContent.forEach((pixel)=>{
+        let moveSpace = '0 0';
+        let moveActually = pixel.style.translate.split(' ')[0].split('px')[0];
+        switch(movement){
+          case 'left':
+            /* TODO: Ajustar movimiento dependiendo de posición de píxel
+            
+            moveSpace = `${parseFloat(moveActually) - size}px 0px`;
+            console.log(parseInt(pixel.style.translate.split(' ')[0].split('px')[0]) - size);
+            console.log('----------------');
+            */
+            
+            moveSpace = `-${size}px 0px`;
+          break;
+          case 'up':
+            moveSpace = `0px -${size}px`;
+          break;
+          case 'right':
+            moveSpace = `${size}px 0px`;
+          break;
+          case 'down':
+            moveSpace = `0px ${size}px`;
+          break;
+        }
+        pixel.style.translate = moveSpace;
+      });
+      
+      
+      
+    });
+
 }, []);
 
   var childs:any = [];

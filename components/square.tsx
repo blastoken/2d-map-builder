@@ -28,7 +28,6 @@ export default function Square ({children, rombo, color, image_url}:any) {
         animation-duration: 1s;
         animation-delay: ${delay}s;
         `;
-        console.log(item.style["background"]);
         
         delay+=0.0025; 
       });
