@@ -2,13 +2,15 @@ import styled from 'styled-components';
 import Square from './square';
 import Triangle from './triangle';
 import Circle from './circle';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 
 
 
 export default function Grid ({children, columns, size, type, rows, full}:any) {
   
+  const [positions,setPositions]= useState([0,0]);
+
   if(!rows){
     rows = 10;
   }
@@ -78,7 +80,6 @@ const WrapGrid = styled.div`
     background: gray;
     width: max-content;
     height: max-content;
-    overflow: hidden;
     
     &>div{
       height: ${size}px;
@@ -213,29 +214,35 @@ useEffect( ()=>{
       const gridContent = Array.from(document.getElementsByTagName('body')[0].children[0]?.children[0]?.children[0]?.children as HTMLCollectionOf<HTMLElement>);
       
       gridContent.forEach((pixel)=>{
-        let moveSpace = '0 0';
-        let moveActually = pixel.style.translate.split(' ')[0].split('px')[0];
-        switch(movement){
-          case 'left':
-            /* TODO: Ajustar movimiento dependiendo de posición de píxel
-            
-            moveSpace = `${parseFloat(moveActually) - size}px 0px`;
-            console.log(parseInt(pixel.style.translate.split(' ')[0].split('px')[0]) - size);
-            console.log('----------------');
-            */
-            
-            moveSpace = `-${size}px 0px`;
-          break;
-          case 'up':
-            moveSpace = `0px -${size}px`;
-          break;
-          case 'right':
-            moveSpace = `${size}px 0px`;
-          break;
-          case 'down':
-            moveSpace = `0px ${size}px`;
-          break;
+        let positions = [0,0];
+        let moveSpace = '0px, 0px';
+        //size = pixel.style.height.split('px')[0];
+        positions = [
+          (parseFloat(pixel.style.translate.split(' ')[0]?.split('px')[0]) ? 
+          parseFloat(pixel.style.translate.split(' ')[0]?.split('px')[0]) : 
+          0), 
+          parseFloat(pixel.style.translate.split(' ')[1]?.split('px')[0]) ? 
+          parseFloat(pixel.style.translate.split(' ')[1]?.split('px')[0]) : 
+          0];
+        
+        if(size != 50){
+          switch(movement){
+            case 'left':
+            moveSpace = `${positions[0]-(size)}px ${positions[1]}px`;
+            break;
+            case 'up':
+              moveSpace = `${positions[0]}px ${positions[1]-size}px`;
+            break;
+            case 'right':
+              moveSpace = `${positions[0] + size}px ${positions[1]}px`;
+            break;
+            case 'down':
+              moveSpace = `${positions[0]}px ${positions[1]+size}px`;
+            break;
+          }
         }
+        //moveSpace = `${positions[0]}px ${positions[1]}px`;
+        //console.log(positions);
         pixel.style.translate = moveSpace;
       });
       
