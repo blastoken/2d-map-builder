@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@bradgarropy/use-countdown": "^1.2.3",
     "babel-plugin-styled-components": "^1.13.2",
     "framer-motion": "^4.1.17",
     "next": "11.1.2",
     "react": "17.0.2",
+    "react-confetti": "^6.0.1",
     "react-dom": "17.0.2",
     "sass": "^1.39.2",
     "styled-components": "^5.3.1"

@@ -262,3 +262,19 @@ a {
     }
   }
 }
+
+#countdown{
+  opacity: 1;
+  visibility: visible;
+  z-index: 999;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background: gray;
+  color: white;
+  overflow: hidden;
+}

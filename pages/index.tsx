@@ -6,6 +6,8 @@ import Triangle from '../components/triangle';
 import Circle from '../components/circle';
 import Link from 'next/link';
 import Grid from '../components/grid';
+import { motion } from "framer-motion";
+import { Countdown } from '../components/countdown';
 const WrapExposition = styled.main`
   display: flex;
   justify-content: center;
@@ -37,36 +39,8 @@ const Home: NextPage = () => {
             </ul>
           </nav>
         </div>
-        <Grid columns="5" size="5">
-
-          <Square/>
-          <Triangle orientationH="right" rectangle={true}/>
-          <Circle orientationH="right" orientationV="down" corner={true}/>
-          <Triangle orientationH="left" orientationV="top"/>
-
-          <Triangle orientationH="right" orientationV="down"/>
-          <Triangle orientationH="left" orientationV="down"/>
-          <Square rombo={true}/>
-          <Triangle orientationH="right" orientationV="top"/>
-
-          <Circle/>
-          <Circle orientationH="right" orientationV="top" corner={true}/>
-          <Circle orientationH="left" orientationV="down" corner={true}/>
-          <Circle orientationH="left" orientationV="top" corner={true}/>
-
-          <Circle orientationH="left" center={true}/>
-          <Circle orientationV="top" center={true}/>
-          <Circle orientationV="down" center={true}/>
-          <Circle orientationH="right" center={true}/>
-          
-          <Triangle orientationH="left" rectangle={true}/>
-          <Triangle orientationV="top" rectangle={true}/>
-          <Triangle orientationV="down" rectangle={true}/>
-          <Square/>
-
-        </Grid>
       </WrapExposition>
-        
+        <Countdown/>
 
       <footer>
         

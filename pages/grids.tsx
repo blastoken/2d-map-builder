@@ -39,6 +39,8 @@ const Grids: NextPage = () => {
               <li><Link href="grids">Grids</Link></li>
               <li><Link href="grids/editor">Editor</Link></li>
               <li><Link href="grids/editor-full">Editor (Full)</Link></li>
+              <li><Link href="grids/play">Play</Link></li>
+              <li><Link href="grids/play-full">Play (Full)</Link></li>
             </ul>
           </nav>
         </div>
